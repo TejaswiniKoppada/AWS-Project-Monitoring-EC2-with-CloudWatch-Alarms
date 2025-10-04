@@ -6,19 +6,12 @@
 
 In this project, I set up and tested an **Amazon CloudWatch Alarm** for monitoring an **EC2 instance**. The alarm was configured to track the **NetworkIn metric** and trigger when network traffic crossed a defined threshold. This gave me practical experience in monitoring AWS resources and generating alerts based on performance metrics.
 
----
-
-## 👤 Author
-
-**Tejaswini Koppada**
-
----
 
 ## ☁️ Cloud Service Provider
 
 * **Amazon Web Services (AWS)**
 
----
+
 
 ## 🎯 What I Did
 
@@ -40,15 +33,8 @@ In this project, I set up and tested an **Amazon CloudWatch Alarm** for monitori
 
 * Launched a **t2.micro instance** with **Amazon Linux 2** AMI.
 * Enabled auto-assign public IP for accessibility.
-* Added the following **UserData script** to set up Apache and a demo webpage:
-
-```bash
-#!/bin/bash
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-echo "<h1>Welcome to Tejaswini’s CloudWatch Demo</h1>" > /var/www/html/index.html
+* Added the  **UserData script** to set up Apache and a demo webpage:
+  
 Accessed the instance via public IP and verified the webpage loaded successfully.
 
 Generating Network Traffic
@@ -97,10 +83,10 @@ Used a t2.micro instance – Free Tier eligible.
 
 CloudWatch Alarm was within Free Tier (first 10 alarms free).
 
-⏳ Time Taken
-Approximately 45 minutes.
 
 ✅ Output Screenshot
+
+<img width="1920" height="911" alt="Image (1)" src="https://github.com/user-attachments/assets/8ee132d3-00cb-4e5b-ada2-9c57cecac9ee" />
 
 
 ✨ This project gave me practical experience in monitoring EC2 instances with CloudWatch, setting thresholds, and testing alarms effectively.
