@@ -1,17 +1,12 @@
 # 🚀 AWS Project – Monitoring EC2 with CloudWatch Alarms
 
-![AWS](https://img.shields.io/badge/AWS-Cloud-yellow) ![Time Taken](https://img.shields.io/badge/Time-45min-blue) ![Status](https://img.shields.io/badge/Status-Completed-green)
-
 ## 📌 Overview
 
 In this project, I set up and tested an **Amazon CloudWatch Alarm** for monitoring an **EC2 instance**. The alarm was configured to track the **NetworkIn metric** and trigger when network traffic crossed a defined threshold. This gave me practical experience in monitoring AWS resources and generating alerts based on performance metrics.
 
-
 ## ☁️ Cloud Service Provider
 
 * **Amazon Web Services (AWS)**
-
-
 
 ## 🎯 What I Did
 
@@ -33,60 +28,49 @@ In this project, I set up and tested an **Amazon CloudWatch Alarm** for monitori
 
 * Launched a **t2.micro instance** with **Amazon Linux 2** AMI.
 * Enabled auto-assign public IP for accessibility.
-* Added the  **UserData script** to set up Apache and a demo webpage:
-  
-Accessed the instance via public IP and verified the webpage loaded successfully.
+* Added the **UserData script** to set up Apache and a demo webpage.
+* Accessed the instance via public IP and verified the webpage loaded successfully.
 
-Generating Network Traffic
-Refreshed the webpage several times to create inbound network traffic.
+### Generating Network Traffic
 
-Allowed the NetworkIn metric to appear in CloudWatch after a few minutes.
+* Refreshed the webpage several times to create inbound network traffic.
+* Allowed the NetworkIn metric to appear in CloudWatch after a few minutes.
 
-CloudWatch Alarm Setup
-Went to CloudWatch → Alarms → Create Alarm.
+### CloudWatch Alarm Setup
 
-Selected EC2 → Per-Instance Metrics → NetworkIn for the instance.
+* Went to CloudWatch → Alarms → Create Alarm.
+* Selected EC2 → Per-Instance Metrics → NetworkIn for the instance.
+* Configured the alarm with:
+  * Period: 5 minutes
+  * Threshold: 5000 bytes
+  * Datapoints to alarm: 3 out of 4
+* Named the alarm `EC2-NetworkIn-Alarm`.
 
-Configured the alarm with:
+### Testing the Alarm
 
-Period: 5 minutes
+* Generated enough traffic to cross the threshold.
+* After about 5–10 minutes, the alarm state changed from **OK → ALARM**.
+* When traffic reduced, the alarm automatically returned to **OK** state.
 
-Threshold: 5000 bytes
+## 📘 Key Learnings
 
-Datapoints to alarm: 3 out of 4
+* A CloudWatch Alarm can monitor metrics and trigger actions when thresholds are breached.
+* NetworkIn is useful for testing because traffic can be generated manually.
+* Alarms evaluate metrics over periods and evaluation periods to avoid false alarms.
+* There is a small delay (5+ minutes) before metrics appear and alarms update.
 
-Named the alarm EC2-NetworkIn-Alarm.
+## 📂 References
 
-Testing the Alarm
-Generated enough traffic to cross the threshold.
+* EC2 Metrics – NetworkIn
+* Amazon CloudWatch Alarms Documentation
 
-After about 5–10 minutes, the alarm state changed from OK → ALARM.
+## 💰 Cost Considerations
 
-When traffic reduced, the alarm automatically returned to OK state.
+* Used a t2.micro instance – Free Tier eligible.
+* CloudWatch Alarm was within Free Tier (first 10 alarms free).
 
-📘 Key Learnings
-A CloudWatch Alarm can monitor metrics and trigger actions when thresholds are breached.
+## ✅ Output Screenshot
 
-NetworkIn is useful for testing because traffic can be generated manually.
-
-Alarms evaluate metrics over periods and evaluation periods to avoid false alarms.
-
-There is a small delay (5+ minutes) before metrics appear and alarms update.
-
-📂 References
-EC2 Metrics – NetworkIn
-
-Amazon CloudWatch Alarms Documentation
-
-💰 Cost Considerations
-Used a t2.micro instance – Free Tier eligible.
-
-CloudWatch Alarm was within Free Tier (first 10 alarms free).
-
-
-✅ Output Screenshot
-
-<img width="1920" height="911" alt="Image (1)" src="https://github.com/user-attachments/assets/8ee132d3-00cb-4e5b-ada2-9c57cecac9ee" />
-
+![EC2 NetworkIn Alarm](https://github.com/user-attachments/assets/8ee132d3-00cb-4e5b-ada2-9c57cecac9ee)
 
 ✨ This project gave me practical experience in monitoring EC2 instances with CloudWatch, setting thresholds, and testing alarms effectively.
